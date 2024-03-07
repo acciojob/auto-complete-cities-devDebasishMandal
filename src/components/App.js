@@ -60,7 +60,7 @@ indian_cities = [
 
 const App = () => {
 
-const [cities,setCities]=useSate(indian_cities);
+const [cities,setCities]=useState(indian_cities);
 const [search,setSearch]=useState("");
 const [click,setClick]=useState(false);
 useEffect(()=>{
