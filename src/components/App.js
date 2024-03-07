@@ -2,7 +2,7 @@
 import React,{useState,useEffect} from "react";
 import './../styles/App.css';
 
-indian_cities = [
+const indian_cities = [
   "Mumbai",
   "Delhi",
   "Bangalore",
@@ -58,38 +58,39 @@ indian_cities = [
 ]
 
 
-const App = () => {
 
-const [cities,setCities]=useState(indian_cities);
+
+const App = () => {
+  const [cities,setCities]=useState(indian_cities);
 const [search,setSearch]=useState("");
 const [click,setClick]=useState(false);
+
 useEffect(()=>{
 
-search && setCities(indian_cities.filter(city =>city.toLowercase().includes(search.trim().toLocaleLowerCase())))
-},[search]);
+  search && setCities(indian_cities.filter(city =>city.toLowercase().includes(search.trim().toLocaleLowerCase())))
+  },[search]);
 
-
-function updateSearch(city){
-setSearch(city);
-setClick(true);
-}
-
-
-
+  function updateSearch(city){
+    setSearch(city);
+    setClick(true);
+    }
 
   return (
     <div>
-        <h1>Search citiesof India :</h1>
+        <h1>Search cities of India:</h1>
         <form>
           <input type="text" 
-          onChange={e=>{
+          onChange={e =>{
             setSearch(e.target.value) 
-            setClick(false) }} 
+            setClick(false)
+           }} 
             value={search}  placeholder="Search..."/>
         </form>
 
-        { !click &&
+        { 
+        !click &&
            <ul>
+            
            {cities && cities.map((city,index)=>(
            <li key={index} onClick={()=>updateSearch(city)}>{city}</li>
            )
@@ -101,4 +102,4 @@ setClick(true);
   )
 }
 
-export default App
+export default App;
