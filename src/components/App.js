@@ -57,17 +57,14 @@ const indian_cities = [
  
 ]
 
-
-
-
 const App = () => {
-  const [cities,setCities]=useState(indian_cities);
+  const [cities,setCities]=useState();
 const [search,setSearch]=useState("");
 const [click,setClick]=useState(false);
 
 useEffect(()=>{
 
-  search && setCities(indian_cities.filter(city =>city.toLowercase().includes(search.trim().toLocaleLowerCase())))
+  search && setCities(indian_cities.filter(city =>city.toLowerCase().includes(search.trim().toLocaleLowerCase())))
   },[search]);
 
   function updateSearch(city){
@@ -90,7 +87,6 @@ useEffect(()=>{
         { 
         !click &&
            <ul>
-            
            {cities && cities.map((city,index)=>(
            <li key={index} onClick={()=>updateSearch(city)}>{city}</li>
            )
